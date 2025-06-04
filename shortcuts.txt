@@ -1,0 +1,34 @@
+####################### window  ######################
+
+# Go to the next tab in most web browsers (Firefox, Chrome, etc.)
+Ctrl+Tab
+
+# Go to the previous tab in most web browsers
+Ctrl+Shift+Tab
+
+# Close the current browser tab
+Ctrl+W
+
+####################### terminal ####################
+
+# Close the entire terminal window
+Ctrl + Shift + Q
+
+# Delete the word before the cursor in the terminal
+Ctrl + W
+
+# Delete the entire line in the terminal
+Ctrl + U
+
+# Clear the terminal screen (like 'clear' command)
+Ctrl + L
+
+# Move the cursor to the beginning of the line
+Ctrl + A
+
+# Move the cursor to the end of the line
+Ctrl + E
+
+# Search through command history interactively
+Ctrl + R
+
