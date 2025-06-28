@@ -4,8 +4,9 @@ ZSHRC="$HOME/.zshrc"
 
 echo "📄 Updating $ZSHRC..."
 
-# Function marker
+# Function markers
 RANGER_FUNC_MARKER="ranger() {"
+TS_FUNC_MARKER="tsc42() {"
 
 # Alias definitions
 ALIAS_NAN="alias nan='gnome-text-editor'"
@@ -47,6 +48,25 @@ if ! grep -qF "$ALIAS_RAN" "$ZSHRC"; then
   echo "$ALIAS_RAN" >> "$ZSHRC"
 else
   echo "✅ Alias for ran already exists."
+fi
+
+# 4. Add tsc42() only on a 42 computer
+#    (we detect a 42 machine by the sudo group being exactly "sudo:x:<gid>:bocal")
+if getent group sudo | grep -qE '^sudo:[^:]*:[0-9]+:bocal$'; then
+  if ! grep -q "$TS_FUNC_MARKER" "$ZSHRC"; then
+    echo "➕ Adding tsc42() wrapper for TypeScript → JS"
+    cat << 'EOF' >> "$ZSHRC"
+
+# 42-specific tsc+node wrapper
+tsc42() {
+    ./node_modules/.bin/tsc "$1" && node "${1%.ts}.js"
+}
+EOF
+  else
+    echo "✅ tsc42() wrapper already exists."
+  fi
+else
+  echo "ℹ️ Not a 42 computer, skipping tsc42() wrapper."
 fi
 
 # Final reminder
